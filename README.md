@@ -1,1 +1,1 @@
-Repositori ini berisi beberapa soal Competitive programming yang pernah saya kerjakan
+Repositori ini mencakup Soal Soal Competitive programming yang pernah saya kerjakan
