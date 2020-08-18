@@ -2,132 +2,25 @@
 
 using namespace std;
 
-string ltrim(const string &);
-string rtrim(const string &);
-vector<string> split(const string &);
 
-/*
- * Complete the 'pickingNumbers' function below.
- *
- * The function is expected to return an INTEGER.
- * The function accepts INTEGER_ARRAY a as parameter.
- */
 
-int pickingNumbers(vector<int> a) {
-sort(a.begin(), a.end());
-map<int,int> m;
-int sum=1;
-int simpan=a[0];
-for(int i=1 ;i<a.size(); i++){
-    if(simpan==a[i]){
-        sum+=1;
-    }else{
-        m.insert(pair<int,int>(simpan,sum));
-        simpan=a[i];
-        sum=0;
+int main(){
+
+    int arr[100] = {0};
+    int n, max=0, k;
+    cin>>n;
+
+    for(int i=0 ; i<n ; i++){
+        cin>>k;
+        arr[k-1]+=1;
     }
-}
 
-int qq=0;
-int ww =0;
-int ee=0;
-
-int ppp=0;
-
-for(auto itr=m.begin(); itr--!=m.end() ;itr++){
-    qq=itr++->first+1 - itr->first;
-    if(qq ==1 || qq==-1){
-        ww = itr->second + itr++->second;
-        if(ww >=ee){
-            ee =ww;
+    for(int i=0 ;i<99 ; i++){
+        if(arr[i]+arr[i+1]>=max){
+            max = arr[i]+arr[i+1];
         }
-        ww=0;
     }
 
-    if(itr->second >ppp){
-        ppp = itr->second;
-    }
-}
-cout<<ppp<<endl;
-cout<<ee<<endl;
-
-if(ppp>ee){
-    return ppp;
-}else{
-    return ee;
-}
-
-
-
-
-}
-
-int main()
-{
-    ofstream fout(getenv("OUTPUT_PATH"));
-
-    string n_temp;
-    getline(cin, n_temp);
-
-    int n = stoi(ltrim(rtrim(n_temp)));
-
-    string a_temp_temp;
-    getline(cin, a_temp_temp);
-
-    vector<string> a_temp = split(rtrim(a_temp_temp));
-
-    vector<int> a(n);
-
-    for (int i = 0; i < n; i++) {
-        int a_item = stoi(a_temp[i]);
-
-        a[i] = a_item;
-    }
-
-    int result = pickingNumbers(a);
-
-    fout << result << "\n";
-
-    fout.close();
-
+    cout<<max<<endl;
     return 0;
-}
-
-string ltrim(const string &str) {
-    string s(str);
-
-    s.erase(
-        s.begin(),
-        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
-    );
-
-    return s;
-}
-
-string rtrim(const string &str) {
-    string s(str);
-
-    s.erase(
-        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
-        s.end()
-    );
-
-    return s;
-}
-
-vector<string> split(const string &str) {
-    vector<string> tokens;
-
-    string::size_type start = 0;
-    string::size_type end = 0;
-
-    while ((end = str.find(" ", start)) != string::npos) {
-        tokens.push_back(str.substr(start, end - start));
-
-        start = end + 1;
-    }
-
-    tokens.push_back(str.substr(start));
-
-    return tokens;
 }
