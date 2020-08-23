@@ -1,10 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-long long int a,b;
 
 long long int bla(long long int n){
-if(n==1){
+if(n==1 || n ==0){
     return 1;
 }else{
 
@@ -13,7 +12,7 @@ if(n==1){
 
 }
 int main(){
-long long  n;
+long long int  n;
 cin>>n;
 
 cout<<bla(n)<<endl;
