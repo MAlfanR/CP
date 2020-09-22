@@ -14,10 +14,6 @@ if(n>=0){
         result+=x[i];
         }
     }
-}else{
-    if(isupper(x[i])){
-        sanggah = int x[i] + n - 65
-    }
 }
 
 
